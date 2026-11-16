@@ -1,134 +1,73 @@
-\# Лабораторная работа: Настройка SSH-доступа к GitHub
+# Лабораторная работа: Настройка SSH-доступа к GitHub
 
+**Студент:** Данил Гребенщиков
 
+**GitHub:** [danilGrebenshikov](https://github.com/danilGrebenshikov)
 
-\*\*Студент:\*\* Данил Гребенщиков
+**Репозиторий:** https://github.com/danilGrebenshikov/GitHub-Actions-CI
 
-\*\*GitHub:\*\* \[danilGrebenshikov](https://github.com/danilGrebenshikov)
+---
 
-\*\*Репозиторий:\*\* https://github.com/danilGrebenshikov/GitHub-Actions-CI
-
-
-
-\## 1. Установка SSH-клиента и генерация ключевой пары
-
-
+## 1. Установка SSH-клиента и генерация ключевой пары
 
 Проверка наличия SSH-клиента:
 
-
-
-&#x20;   ssh -V
-
-
-
+```bash
+ssh -V
 Генерация ключа ed25519 с passphrase:
 
+bash
+ssh-keygen -t ed25519 -C "danilgrebensikov7@gmail.com"
+Ключ сохранён в ~/.ssh/id_ed25519, приватный ключ защищён passphrase.
 
+https://images/01_ssh_version.png
 
-&#x20;   ssh-keygen -t ed25519 -C "danilgrebensikov7@gmail.com"
+https://images/02_ssh_keygen.png
 
-
-
-Ключ сохранён в `\~/.ssh/id\_ed25519`, приватный ключ защищён passphrase.
-
-
-
-!\[ssh -V](images/01\_ssh\_version.png)
-
-!\[ssh-keygen](images/02\_ssh\_keygen.png)
-
-!\[ls \~/.ssh](images/03\_ssh\_ls.png)
-
-
+https://images/03_ssh_ls.png
 
 Проверка, что ключ защищён passphrase (команда запрашивает пароль):
 
-
-
-&#x20;   ssh-keygen -y -f \~/.ssh/id\_ed25519
-
-
-
-!\[passphrase check](images/04\_key\_passphrase\_check.png)
-
-
+bash
+ssh-keygen -y -f ~/.ssh/id_ed25519
+https://images/04_key_passphrase_check.png
 
 Публичный ключ:
 
+bash
+cat ~/.ssh/id_ed25519.pub
+https://images/05_public_key.png
 
-
-&#x20;   cat \~/.ssh/id\_ed25519.pub
-
-
-
-!\[public key](images/05\_public\_key.png)
-
-
-
-\## 2. Добавление публичного ключа в GitHub
-
-
-
+2. Добавление публичного ключа в GitHub
 Ключ добавлен: GitHub → Settings → SSH and GPG keys → New SSH key.
 
+https://images/06_github_key.png
 
-
-!\[github key](images/06\_github\_key.png)
-
-
-
-\## 3. Проверка SSH-подключения
-
-
-
-&#x20;   ssh -T git@github.com
-
-
-
+3. Проверка SSH-подключения
+bash
+ssh -T git@github.com
 Результат:
 
+text
+Hi danilGrebenshikov! You've successfully authenticated, but GitHub does not provide shell access.
+https://images/07_ssh_T.png
 
-
-&#x20;   Hi danilGrebenshikov! You've successfully authenticated, but GitHub does not provide shell access.
-
-
-
-!\[ssh -T](images/07\_ssh\_T.png)
-
-
-
-\## 4. Работа с репозиторием по SSH
-
-
-
+4. Работа с репозиторием по SSH
 Клонирование по SSH-URL:
 
-
-
-&#x20;   git clone git@github.com:danilGrebenshikov/GitHub-Actions-CI.git
-
-&#x20;   cd GitHub-Actions-CI
-
-
-
+bash
+git clone git@github.com:danilGrebenshikov/GitHub-Actions-CI.git
+cd GitHub-Actions-CI
 Создание коммита и push:
 
-
-
-&#x20;   echo "# SSH Test" >> test.md
-
-&#x20;   git add test.md
-
-&#x20;   git commit -m "Test SSH push"
-
-&#x20;   git push origin main
-
-
-
+bash
+echo "# SSH Test" >> test.md
+git add test.md
+git commit -m "Test SSH push"
+git push origin main
 Push выполнен без запроса пароля GitHub (используется SSH-ключ).
 
+https://images/08_push.png
 
-
-!\[push](images/08\_push.png)
-
+Вывод
+В ходе работы настроен SSH-доступ к GitHub: сгенерирован ключ ed25519 с passphrase, публичный ключ добавлен в аккаунт, проверено подключение через ssh -T, выполнены clone/commit/push по SSH-URL без запроса пароля GitHub. Навыки работы с SSH-ключами и Git освоены.
