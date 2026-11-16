@@ -6,8 +6,6 @@
 
 **Репозиторий:** https://github.com/danilGrebenshikov/GitHub-Actions-CI
 
----
-
 ## 1. Установка SSH-клиента и генерация ключевой пары
 
 Проверка наличия SSH-клиента:
