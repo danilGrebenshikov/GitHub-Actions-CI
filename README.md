@@ -10,7 +10,7 @@
 
 Проверка наличия SSH-клиента:
 
-```bash
+```
 ssh -V
 Генерация ключа ed25519 с passphrase:
 
@@ -32,17 +32,15 @@ https://images/04_key_passphrase_check.png
 
 Публичный ключ:
 
-bash
 cat ~/.ssh/id_ed25519.pub
 https://images/05_public_key.png
 
-## 2. Добавление публичного ключа в GitHub
+2. Добавление публичного ключа в GitHub
 Ключ добавлен: GitHub → Settings → SSH and GPG keys → New SSH key.
 
 https://images/06_github_key.png
 
-## 3. Проверка SSH-подключения
-bash
+3. Проверка SSH-подключения
 ssh -T git@github.com
 Результат:
 
@@ -50,15 +48,15 @@ text
 Hi danilGrebenshikov! You've successfully authenticated, but GitHub does not provide shell access.
 https://images/07_ssh_T.png
 
-## 4. Работа с репозиторием по SSH
+4. Работа с репозиторием по SSH
 Клонирование по SSH-URL:
 
-bash
+
 git clone git@github.com:danilGrebenshikov/GitHub-Actions-CI.git
 cd GitHub-Actions-CI
 Создание коммита и push:
 
-bash
+
 echo "# SSH Test" >> test.md
 git add test.md
 git commit -m "Test SSH push"
@@ -67,5 +65,5 @@ Push выполнен без запроса пароля GitHub (использ�
 
 https://images/08_push.png
 
-## Вывод
+Вывод
 В ходе работы настроен SSH-доступ к GitHub: сгенерирован ключ ed25519 с passphrase, публичный ключ добавлен в аккаунт, проверено подключение через ssh -T, выполнены clone/commit/push по SSH-URL без запроса пароля GitHub. Навыки работы с SSH-ключами и Git освоены.
