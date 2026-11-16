@@ -46,7 +46,7 @@ text
 Hi danilGrebenshikov! You've successfully authenticated, but GitHub does not provide shell access.
 https://images/07_ssh_T.png
 
-```
+
 ## 4. Работа с репозиторием по SSH
 Клонирование по SSH-URL:
 
